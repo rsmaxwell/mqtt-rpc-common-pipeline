@@ -10,7 +10,7 @@ pipeline {
       steps {
         container('tools') {
           dir('project') {
-            echo 'preparing the application'
+            echo 'preparing the module'
             checkout([
               $class: 'GitSCM', 
               branches: [[name: '*/main']], 
@@ -23,7 +23,7 @@ pipeline {
             ]], 
               userRemoteConfigs: [[url: 'https://github.com/rsmaxwell/mqtt-rpc']]
             ])
-            sh('./scripts/prepare.sh')
+            sh('./mqtt-rpc-common/scripts/prepare.sh')
           }
         }
       }
@@ -33,8 +33,8 @@ pipeline {
       steps {
         container('gradle') {
           dir('project') {
-            echo 'deploying the application'
-            sh('./scripts/deploy.sh')
+            echo 'building and deploying the module'
+            sh('./mqtt-rpc-common/scripts/deploy.sh')
           }
         }
       }
