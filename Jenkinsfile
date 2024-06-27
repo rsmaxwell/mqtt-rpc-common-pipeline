@@ -25,7 +25,7 @@ pipeline {
             ])
             sh('./mqtt-rpc-common/scripts/prepare.sh')
             sh('./mqtt-rpc-request/scripts/prepare.sh')
-            sh('./mqtt-rpc-cresponse/scripts/prepare.sh')
+            sh('./mqtt-rpc-response/scripts/prepare.sh')
           }
         }
       }
