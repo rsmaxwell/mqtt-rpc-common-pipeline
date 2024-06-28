@@ -23,9 +23,7 @@ pipeline {
             ]], 
               userRemoteConfigs: [[url: 'http://github.com/rsmaxwell/mqtt-rpc']]
             ])
-            sh('./mqtt-rpc-common/scripts/prepare.sh')
-            sh('./mqtt-rpc-request/scripts/prepare.sh')
-            sh('./mqtt-rpc-response/scripts/prepare.sh')
+            sh('./scripts/prepare.sh')
           }
         }
       }
@@ -36,9 +34,7 @@ pipeline {
         container('gradle') {
           dir('project') {
             echo 'building and deploying the module'
-            sh('./mqtt-rpc-common/scripts/deploy.sh')
-            sh('./mqtt-rpc-request/scripts/deploy.sh')
-            sh('./mqtt-rpc-response/scripts/deploy.sh')
+            sh('./scripts/deploy.sh')
           }
         }
       }
